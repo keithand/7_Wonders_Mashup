@@ -1,0 +1,103 @@
+/* STYLES FOR ENTIRE DOCUMENT */
+
+html {
+	height:100%;
+}
+
+header, footer, section {
+	border: 1px solid #000;
+}
+
+body {
+	width: 1024px;
+	font-family: 'Jacques Francois', serif;
+	background-color: #ggg;
+	height:100%;
+}
+
+p {
+	font-size: 16px;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h3 {
+	font-size: 1.2em;
+}
+
+#tweets {
+	color:#30D8F0;
+}
+
+#title {
+	text-align: center;
+}
+
+.twitter_wall {
+	width: 400px;
+	float:left;
+	overflow: auto;
+	padding:10px;
+}
+
+/*TWEET TEMPLATE PROPERTIES */
+
+.tweet {
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+	padding:5px 0 5px 0;
+}
+
+#twitter_title {
+	margin-bottom: 10px;
+}
+
+.name_wonder {
+	color:#30D8F0;
+}
+
+.screennames {
+	padding-top: 5px;
+}
+
+.icon {
+	float:left;
+	height:40px;
+	width:40px;
+	border:1px solid #555;
+	margin-right:10px;
+}
+
+.screenname {
+	float:left;
+	font-weight: bold;
+}
+
+.handle {
+	float: left;
+	font-weight: bold;
+	margin-left:10px;
+	color:#30D8F0;
+}
+
+.text {
+	clear:left;
+	padding-top: 5px; 
+	font-style: italic;
+}
+
+
+
+/* GOOGLE MAP PROPERTIES */
+
+#google_map {
+	float:left;
+	width:600px;
+	height:600px;
+}
+
+.footer {
+	clear:left;
+}

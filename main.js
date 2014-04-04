@@ -3,7 +3,6 @@
 //Use $(document).ready(function(()})) to make the site interact with the elements from the API
 
 $(document).ready(function() {
-	$('.marker').on('click', getTweets);
 });
 
 //set the google map api custom settings 
@@ -55,6 +54,8 @@ function initialize () {
 function setMarkers(map, locations) {
 	for (var i = 0; i < locations.length; i++){
 		var mark = locations[i];
+		var locTitle = mark[0];
+		var loczindex = mark[3];
 		var myLatLng = new google.maps.LatLng(mark[1], mark[2]);
 		var infowindow = new google.maps.InfoWindow({
 			content: mark[0]
@@ -62,22 +63,23 @@ function setMarkers(map, locations) {
 		var marker = new google.maps.Marker({
 			position: myLatLng,
 			map: map,
-			title: mark[0],
-			zindex: mark[3],
+			title: locTitle,
+			zindex: loczindex,
 			//CAN I SET THE PROPERTY IN THE HTML??? I DID THIS TO CALL THE EVENT HANDLER
-			class: marker,
 		});
+
+			//event listener for the infowindow (if will use)
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.open(map, marker); //will add the load of tweets here
+				console.log('does this work?')
+			});
 
 	}
 
 } //closing for setMarkers function
 
 
-//event listener for the infowindow (if will use)
-google.maps.event.addListener(wonders, 'click', function(){
-	infowindow.open(map, marker); //will add the load of tweets here
-	//getTweetsForArea();
-});
+
 
 //event listener for the map, which happens when the document is loaded
 google.maps.event.addDomListener(window, 'load', initialize)
@@ -92,19 +94,20 @@ google.maps.event.addDomListener(window, 'load', initialize)
 //call the AJAX GET request for the information to be pulled from the Twitter servers. This will include
 
 var getTweets = function(location){
-
+	var location = wonders;
 	var currentTarget = event.target.id;
 	var marker = $(this).find(wonders[4]); 
 
 	var request = {
-		q: location[4],
-		site: 'twitter',
-		order: 'desc',
-		sort: 'creation'};
+		//q: location[4],
+		//site: 'twitter',
+		//order: 'desc',
+		//sort: 'creation'
+	};
 
 	var result = $.ajax({
-		url: 'https://api.twitter.com/1.1/search/tweets.json',
-		data: request,
+		url: 'https://api.twitter.com/1.1/search/tweets.json?q=%23' + location[4] + '&src=typd',
+		//data: request,
 		dataType: "json",
 		type: "GET",
 	})
@@ -123,10 +126,11 @@ var getTweets = function(location){
 
 }; // closing of the GETTWEETS function
 
+
 function displayData(event, response){
-	
+	console.log('does this work?')
 	//get the marker info and the data from wonders[4]
-	var currentClick = event.
+	var currentClick = event.target;
 	var marker = $(currentClick).find(wonders[4]).val();
 
 	//clear the screen from previous results

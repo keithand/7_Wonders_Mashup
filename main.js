@@ -3,6 +3,16 @@
 //Use $(document).ready(function(()})) to make the site interact with the elements from the API
 
 $(document).ready(function() {
+
+
+
+
+
+
+
+
+
+	
 });
 
 //set the google map api custom settings 
@@ -46,9 +56,7 @@ function initialize () {
 		['Islands of Dubai', 24.998427, 54.992853, 7, "#bluewatersisland"]
 	];
 
-//var infowindow = new google.maps.InfoWindow({
-//			content: wonders[0]
-//		});
+
 
 //this function sets the location and appearance of the wonders object by using a for loop
 function setMarkers(map, locations) {
@@ -67,12 +75,13 @@ function setMarkers(map, locations) {
 			zindex: loczindex,
 			//CAN I SET THE PROPERTY IN THE HTML??? I DID THIS TO CALL THE EVENT HANDLER
 		});
+		getTweets(mark);
 
-			//event listener for the infowindow (if will use)
-			google.maps.event.addListener(marker, 'click', function(){
-				infowindow.open(map, marker); //will add the load of tweets here
-				console.log('does this work?')
-			});
+		//event listener for the infowindow (if will use)
+		google.maps.event.addListener(marker, 'click', function(){
+			infowindow.open(map, marker); //will add the load of tweets here
+			console.log('does this work?');
+		});
 
 	}
 
